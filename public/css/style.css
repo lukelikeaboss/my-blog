@@ -1,0 +1,54 @@
+.logo-image{
+    width: 100px;
+    height: 100px;
+}
+.bg-black{
+    background-color: purple:
+
+}
+
+.bg-purple {
+    background-color: #490E60;
+}
+.image-fit{
+    object-fit: cover;
+}
+.btn-success{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+    h4 {
+         color: darkolivegreen;
+         font-size: larger;
+         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+     
+    
+     
+  
+    }
+
+
+    .bg-gradient {
+
+        background: #ef32d9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #89fffd, #ef32d9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    }
+
+    .nav-link {
+
+        color:rgb(52, 26, 78) !important;
+    }
+
+    .nav-link:hover {
+
+        color:white!important;
+    }
+    h6{
+        font-weight: bolder;
+        font-size: large;
+        text-decoration-color: darkviolet;
+    }
