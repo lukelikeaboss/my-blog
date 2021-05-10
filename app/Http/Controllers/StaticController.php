@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\projects;
 use App\Models\category;
+use App\Models\Comment;
 
 
 class StaticController extends Controller
@@ -34,6 +35,8 @@ class StaticController extends Controller
     public function showPostDetails($id){
         $categories = category::all()->take(4);
         $post = Post::findOrFail($id);
-        return view('posts.detail-post', compact('categories', 'post'));
+        $comments = Comment::where('post_id', $id)->get();
+        return view('posts.detail-post', compact('categories', 'post', 'comments'));
+       
     }
 }

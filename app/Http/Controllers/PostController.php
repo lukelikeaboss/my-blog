@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\category;
+use App\Models\Comments;
 
 class PostController extends Controller
 {
@@ -65,7 +66,8 @@ class PostController extends Controller
     {
 
         $post = Post::findorFail($id);
-        return view('posts.view-post', compact('post'));
+            $comments = Coment::where('post_id', $id)->get();
+        return view('posts.view-post', compact('post', 'coments'));p
         //
     }
 
@@ -125,6 +127,6 @@ class PostController extends Controller
     }
     public function showDetails($id){
         $post = Post::findorFail($id);
-        return view('posts.detail-post', compact('post'));
+        return view('posts.detail-post', compact('post', 'comments'));
     }
 }

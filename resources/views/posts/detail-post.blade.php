@@ -33,7 +33,7 @@
         <h3>{{ $post->title }}</h3>
     </div>
     <div class="row justify-content-center">
-        <div class=" col-lg-10 col-md-10 col-sm-12">
+        <div class=" col-lg-8 col-md-8 col-sm-12">
             <p>{{ $post->post }}</p>
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -54,9 +54,16 @@
                         </div>
                         <div class="row justify-content-center">
                             <button class="btn btn-success bg-warning" type="submit"> Hit me Up</button>
+                        </div>
                     </form>
                 </div>
             </div>
+            <h5 class="mt-4 ml-4"> Recent {{-- comment --}}comment</h5>
+            @foreach ($comments as $comment )
+            @include('posts.comment')
+              <hr>
+            @endforeach
+            
         </div>
         <div class="col-lg-2 col-md-2 col-sm-12">
 
