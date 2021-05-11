@@ -100,3 +100,5 @@ Route::get('delete/project/{id}', [App\Http\Controllers\ProjectController::class
 
 Route::get('delete/post/{id}', [App\Http\Controllers\PostController::class,'destroy'])->name('delete.post');
 Route::post('/store/comment',[App\Http\Controllers\CommentController::class, 'store'])->name('store.comment');
+
+Route::get('posts/list/', [App\Http\Controllers\Postcontroller::class, 'showPostlist'])->name('show.post.list');

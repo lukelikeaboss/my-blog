@@ -129,7 +129,7 @@ class ProjectController extends Controller
     public function showDetails($id){
         $project = Projects::findorFail($id);
 
-        return view ('projects.details-project', compact('project'));
+        return view ('projects.detail-project', compact('project'));
 
     }
 }
