@@ -67,7 +67,7 @@ class PostController extends Controller
 
         $post = Post::findorFail($id);
             $comments = Coment::where('post_id', $id)->get();
-        return view('posts.view-post', compact('post', 'coments'));p
+        return view('posts.view-post', compact('post', 'coments'));
         //
     }
 
@@ -129,4 +129,20 @@ class PostController extends Controller
         $post = Post::findorFail($id);
         return view('posts.detail-post', compact('post', 'comments'));
     }
+
+public function showPostlist(Request $request)
+    {
+
+        $categories = category::all();
+        if($request->has('category')){
+            $posts = Post::where('category_id', $request->category)->get();
+        }
+        else{
+            $posts = Post::all();
+        }
+       
+        return view('posts.posts-list', compact('posts', 'categories'));
+    }
+
 }
+

@@ -18,7 +18,7 @@
         <!-- Row with a list of categories-->
     <div class="row my-3">
     @foreach ($categories as $category )
-    <a href="#" class=" btn btn-outline-secondary rounded-pill mx-1">{{ $category->name }}</a>     
+    <a href="{{ route('show.post.list', ['category'=>$category->id]) }}" class=" btn btn-outline-secondary rounded-pill mx-1">{{ $category->name }}</a>     
     @endforeach
     </div>
     <!-- end of row with list of categories-->

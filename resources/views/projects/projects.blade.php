@@ -32,9 +32,9 @@
                             <tr  class="bg-success">
                             <td>ID</td>
                             <td>Name</td>
+                            <td>Description</td>
                             <td>Platform</td>
-                            <td>Created at@</td>
-                            <td>Platform</td>
+                            <td>Created @</td>
                             <td>Actions</td>
                             </tr>
                         </thead>
