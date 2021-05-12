@@ -17,11 +17,10 @@
 
         <!-- Row with a list of categories-->
     <div class="row my-3">
-        <a href="#" class=" btn btn-outline-secondary rounded-pill mx-1">nmae</a>     
-        <a href="#" class=" btn btn-outline-secondary rounded-pill mx-1">nmae</a>     
-        <a href="#" class=" btn btn-outline-secondary rounded-pill mx-1">nmae</a>     
-        <a href="#" class=" btn btn-outline-secondary rounded-pill mx-1">nmae</a>     
-       <a href="#" class=" btn btn-outline-secondary rounded-pill mx-1">nmae</a>     
+      <a href="{{ route('show.project.list', ['platform'=> 'Web Development:php']) }}" class=" btn btn-outline-secondary rounded-pill mx-1">Web Development:php</a>     
+      <a href="{{ route('show.project.list',  ['platform'=> 'Web Development::python']) }}" class=" btn btn-outline-secondary rounded-pill mx-1">Web development:python</a>     
+      <a href="{{ route('show.project.list',  ['platform'=> 'Android']) }}" class=" btn btn-outline-secondary rounded-pill mx-1">Android</a>     
+      <a href="{{ route('show.project.list', ['platform'=> ' web design:Html&css']) }}" class=" btn btn-outline-secondary rounded-pill mx-1"> web design:Html&css</a>     
    
     </div>
     <!-- end of row with list of categories-->
@@ -55,6 +54,15 @@
 
 
 </div>
+<h4 class="mt-5 text-center "> Related Projects</h4>  
+<br>
+<div class="row justify-content-center">
+
+  @foreach ($related_projects as $project )
+  <div class="col-lg-4 col-md-6 col-sm-12">
+      @include('layouts.project-brief')
+  </div>
+  @endforeach
 
 <!-- Button trigger modal -->
 

@@ -1,4 +1,4 @@
-<div class="card border-0 shadow-sm">
+<div class="card h-100 border-0 shadow-sm">
     <a href="{{ Route('show.project.details',$project->id) }}">
         <img
         src="{{asset('images/y62.jpg')}}" alt="Toyota Landcruiser" class="img-fluid card-img-top w-100 image-fit" height="500" />

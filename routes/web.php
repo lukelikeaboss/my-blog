@@ -53,6 +53,7 @@ Route::post('edit/post/{id}', [App\Http\Controllers\PostController::class, 'upda
 
 Route::get('show/project/details/{id}', [App\Http\Controllers\ProjectController::class, 'showDetails'] )->name('show.project.details');
 
+
 Route::get('posts',[App\Http\Controllers\PostController::class, 'index'] )->name('posts');
 
 Route::get('add/posts',[App\Http\Controllers\PostController::class, 'create'] )->name('add.posts');
@@ -102,3 +103,4 @@ Route::get('delete/post/{id}', [App\Http\Controllers\PostController::class,'dest
 Route::post('/store/comment',[App\Http\Controllers\CommentController::class, 'store'])->name('store.comment');
 
 Route::get('posts/list/', [App\Http\Controllers\Postcontroller::class, 'showPostlist'])->name('show.post.list');
+Route::get('project/list/', [App\Http\Controllers\ProjectController::class, 'showProjectList'])->name('show.project.list');

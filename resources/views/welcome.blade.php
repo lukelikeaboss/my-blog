@@ -41,11 +41,7 @@
 <!--Blog project content-->
 <div class="container-fluid">
     <div class="row justify-content-center mt-5">
-        @foreach ($projects as $project )
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            @include('layouts.project-brief')
-        </div>
-        @endforeach
+       
 
     </div>
 </div>
