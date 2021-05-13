@@ -38,14 +38,37 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-      
+        if($request->hasFile('image'))
+        {
+            $allowedfileextensions = ['jpg','jpeg', 'png', 'svg'];
+            $file = $request->file('image');
+            /**
+             * here we specify a file namefor the uploaded file
+             * and check whether it has the right extencsion
+             */
+            $file_name = time().'.'. $file->getclientoriginalname();
+            $extension = $file->getclientoriginalextension();
+            $check = in_array($extension, $allowedfileextensions);
+                if ($check){
+                    /**
+                     * if the extension is correct, then we save the file.
+                     */
+                    $saved_file =$file->storeAs('public/images', $file_name);
+                }
+                else {
+                    $saved_file ="wrong_file extenciones monsieur";
+                    return redirect()->back();
+                }}
+                else {
+                    $file_name ="no saved pas le file";
+                }
      projects::create([
 
         'name'=> $request->name,
         'platform' => $request->platform,
         'description'=> $request->description,
         'code_url'=>$request->code_url,
-        'featured_image_url'=>$request->featured_image_url,
+        'featured_image_url'=>$file_name,
         'user_id'=>1,
 
       ]);
