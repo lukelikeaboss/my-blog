@@ -1,7 +1,6 @@
 <div class="card border-0 shadow-sm">
   <a href="{{ Route('show.post.details',$post->id) }}">
-    <img
-    src="{{asset('images/lc200.jpg')}}" alt="Toyota Landcruiser" class="img-fluid card-img-top w-100 image-fit" height="500" />
+    <img src="{{asset('storage/images/'.$post->featured_image_url)}}" alt="picturescque" class="img-fluid card-img-top w-100 image-fit" height="500" />
   </a>
 
   <div class="card-body">

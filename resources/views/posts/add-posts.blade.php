@@ -13,7 +13,7 @@
             <div class="card shadow border-0">
                 <div class="card-body">
                     <h4>Leave us a message</h4>
-                    <form action="{{ route('create.post') }}" method="post">
+                    <form action="{{ route('create.post') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <!-- Adding select category-->

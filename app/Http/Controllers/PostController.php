@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\category;
 use App\Models\Comments;
-
+use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
     /**
@@ -41,11 +41,37 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('image'))
+        {
+            $allowedfileextensions = ['jpg','jpeg', 'png', 'svg'];
+            $file = $request->file('image');
+            /**
+             * here we specify a file namefor the uploaded file
+             * and check whether it has the right extencsion
+             */
+            $file_name = time().'.'. $file->getclientoriginalname();
+            $extension = $file->getclientoriginalextension();
+            $check = in_array($extension, $allowedfileextensions);
+                if ($check){
+                    /**
+                     * if the extension is correct, then we save the file.
+                     */
+                    $saved_file =$file->storeAs('public/images', $file_name);
+                }
+                else {
+                    $saved_file ="wrong_file extenciones monsieur";
+                    return redirect()->back();
+                }}
+                else {
+                    $file_name ="no saved pas le file";
+                }
         
+
+
         Post::create([
 
             'title'=>$request->Title,
-            'featured_image_url'=> $request->image,
+            'featured_image_url'=> $file_name,
             'post'=> $request->post,
             'author' => "Sir Kim",
             'user_id' => 1,
