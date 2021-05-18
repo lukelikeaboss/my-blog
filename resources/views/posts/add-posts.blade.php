@@ -2,7 +2,19 @@
 
 @section('content')
 
-<div class="container ">
+<div class="container-fluid ">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error )
+                <li>{{$error }}</li>
+            @endforeach
+        </ul>
+    </div>
+        
+    @endif
+
+
     <div class="row justify-content-center">
         <h3 class="font-weight-bold text-success "><i class="fa fa-edit"></i> Add New Posts</h3>
     </div>
@@ -33,15 +45,22 @@
                           <!-- ending select category-->
                         <div class="form-group">
                              <label> Name:</label>
-                             <input  name="Title"  type="text" class="form-control" placeholder="Your Name">
-                        </div>
+                             <input  name="Title" value="{{ request()->old('title') }}" type="text" class="form-control" placeholder="Your Name">
+                        </div>  @error('title')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                        @enderror
+
                          <div>    <label>Description:</label>
-                            <textarea type="text" class="form-control"  name="post" style="height: 300px;" placeholder="Remember to leave your name here:">
+                            <textarea type="text" class="form-control"  name="post" style="height: 300px;" placeholder="Remember to leave your name here:">{{ old('post') }}
                             </textarea>
                         </div>
                         <div class="form-group mb-2">
                             <input type="file" name="image" class="form-control" placeholder="">
                            <label> Url:</label> <input type="text" class="form-control" placeholder="Enter Git url">
+                          
+    
+
+
                        </div>
 <p>
 </p><p></p>

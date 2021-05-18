@@ -41,6 +41,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request ->validate([
+            'title'=>'required|unique:posts|max:255',
+            'post'=>'required',
+            'image'=>'mimes: jpeg, jpg, svg, png',
+        ]);
+
         if($request->hasFile('image'))
         {
             $allowedfileextensions = ['jpg','jpeg', 'png', 'svg'];
