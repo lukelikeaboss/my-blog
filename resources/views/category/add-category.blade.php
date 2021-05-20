@@ -3,6 +3,16 @@
 @section('content')
 
 <div class="container ">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error )
+                <li>{{$error }}</li>
+            @endforeach
+        </ul>
+    </div>
+        
+    @endif
     <div class="row justify-content-center">
         <h3 class="font-weight-bold text-success "><i class="fa fa-edit"></i> Add New Category</h3>
     </div>

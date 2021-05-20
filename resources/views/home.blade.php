@@ -3,34 +3,50 @@
 @section('content')
 <div class="container">
 <div class="row mt-5">
-        <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
-            <div class="card border-0 shadow h-100">
+    <div class="col-lg-3 col-md-3 col-sm-12 mt-3 ">
+        <a href="{{ route('category') }}" >
+            <div class="card h-100 border-0 shadow">
+                <div class="card-body text-center">
+                    <i class="fa fa-stack-overflow fa fa-4x mb-3 text-primary"></i>
+                    
+                    <h5 class="text-dark">Total categories</h5>
+                    <h6>{{ $categories->count()}}</h6>
+                </div>
+            </div>
+
+    </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-12 mt-3">
+            <a href="{{ route('posts') }}" > <div class="card border-0 shadow h-100">
+                
                 <div class="card-body text-center">
                     <i class="fa fa-rss fa-4x text-danger" aria-hidden="true" ></i>
                     
                     <h5>Total Posts</h5>
                    <h6>{{ $posts->count() }}</h6>
                 </div>
-            </div>
+            </div></a>
+           
 
         </div>
 
 
-        <div class="col-lg-4 col-md-4 col-sm-12 mt-3 ">
-            <div class="card h-100 border-0 shadow">
-                <div class="card-body text-center">
-                    <i class="fa fa-stack-overflow fa fa-4x mb-3 text-primary"></i>
-                    
-                    <h5>Total Projects</h5>
-                    <h6>{{ $projects->count()}}</h6>
-                </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 mt-3 ">
+           <a href="{{ route('project') }}"> <div class="card h-100 border-0 shadow">
+            <div class="card-body text-center">
+                <i class="fa fa-stack-overflow fa fa-4x mb-3 text-primary"></i>
+                
+                <h5>Total Projects</h5>
+                <h6>{{ $projects->count()}}</h6>
             </div>
+        </div></a>
 
         </div>
 
 
-        <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+        <div class="col-lg-3 col-md-3 col-sm-12 mt-3">
             <div class="card h-100 border-0 shadow">
+                
                 <div class="card-body text-center ">
                     <i class="fa fa-comments fa-4x text-secondary" aria-hidden="true"></i>
                     

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\projects;
+use App\Http\Requests\storeProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -36,8 +37,10 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( storeProjectRequest $request)
     {
+        $validated = $request->validated();
+       
         if($request->hasFile('image'))
         {
             $allowedfileextensions = ['jpg','jpeg', 'png', 'svg'];
@@ -75,7 +78,7 @@ class ProjectController extends Controller
       $projects = projects::all();
           
 
-      return view('home')->with('projects', $projects);
+      return redirect()->route('home')->with('projects', $projects);
       
       
         //

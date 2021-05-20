@@ -37,6 +37,11 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item " href="{{route('home')}}">dashboard</a>
+                                    <a class="dropdown-item " href="{{route('project')}}">projects</a>
+                                    <a class="dropdown-item " href="{{route('posts')}}">posts</a>
+                                    <a class="dropdown-item " href="{{route('category')}}">categories</a>
+
+
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

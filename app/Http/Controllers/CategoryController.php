@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -41,10 +42,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [            'name'=>'required|max:255|string|unique:categories'
 
-        category::create(['name' => $request->name,
+
+    ];
+        //a validator instance can accept data , validation rules and error messages thats what we are inputing here through the first thing is the data request all
+        $validator = Validator::make($request->all(),$rules, $messages = [
+            'required'=> 'chill huwezi niacha hanging.'
+        ]);
+        if($validator->fails()){
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+        }       
+        else {
+            category::create(['name' => $request->name,
         ]);
         return redirect()->route('category');
+        }
+       
         //
     }
 
