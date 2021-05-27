@@ -9,12 +9,12 @@
    </button>
     <div class="collapse navbar-collapse " id="main-navigation">
         <ul class="navbar-nav ml-auto navbar-dark text-dark ">
-            <li  class="nav-item"> <a class="nav-link  " href="/">Home</a></li>
-            <li  class="nav-item"> <a class="nav-link  " href="{{route('about')}}">About</a></li>
-            <li  class="nav-item"> <a class="nav-link  " href="{{route('show.post.list')}}">Blog</a></li>
-            <li  class="nav-item"> <a class="nav-link  " href="{{route('show.project.list')}}">My Work</a></li>
-            <li  class="nav-item"> <a class="nav-link  " href="{{route('contact')}}">Contacts</a></li>
-            <li  class="nav-item"> <a class="nav-link " href="{{route('offers')}}">Offers</a></li>
+            <li  class="nav-item"> <a class="nav-link  " href="/">Home</li>
+            <li  class="nav-item"> <a class="nav-link  " href="{{route('about')}}">About</li>
+            <li  class="nav-item"> <a class="nav-link  " href="{{route('show.post.list')}}">Blog</li>
+            <li  class="nav-item"> <a class="nav-link  " href="{{route('show.project.list')}}">My Work</li>
+            <li  class="nav-item"> <a class="nav-link  " href="{{route('contact')}}">Contacts</li>
+            <li  class="nav-item"> <a class="nav-link " href="{{route('offers')}}">Offers</li>
             
            
             @guest
@@ -36,10 +36,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item " href="{{route('home')}}">dashboard</a>
-                                    <a class="dropdown-item " href="{{route('project')}}">projects</a>
-                                    <a class="dropdown-item " href="{{route('posts')}}">posts</a>
-                                    <a class="dropdown-item " href="{{route('category')}}">categories</a>
+                                    <li class="dropdown-item " href="{{route('home')}}">dashboard</a>
+                                    <li class="dropdown-item " href="{{route('project')}}">projects</a>
+                                    <li class="dropdown-item " href="{{route('posts')}}">posts</a>
+                                    <li class="dropdown-item " href="{{route('category')}}">categories</a>
 
 
 

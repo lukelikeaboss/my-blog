@@ -84,7 +84,7 @@
                         </thead>
                             <tbody>
                                 @foreach ($projects as $project )
-                                <tr>
+                                <tr id="project_id_{{ $project->id }}">
                                     <td>{{ $project->id }}</td>
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->description }}</td>
@@ -92,7 +92,9 @@
                                     <td>{{ $project->created_at }}</td>
                                     <td>
                                         <a href="{{ route('edit.project', $project->id ) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                            <a href="#"class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                                            <a href="javascript:void(0)"class="btn btn-danger btn-sm delete-project"
+                                            data-id="{{ $project->id }}">
+                                                <i class="fa fa-trash"></i>
                                             </a>
                                     </td>
                                   
@@ -276,4 +278,34 @@
     $('.datatable').DataTable();
 } );
     </script>
+@endsection
+@section('scripts')
+<script>
+$document.ready(function(){
+$.ajaxSetup({
+    headers:{
+        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$('body').on('click','.delete-project', function(){
+    var id =$(this).data("id");
+    confirm("are you su=re you want to delete")
+$.ajax({
+    type:"POST",
+    url:"",
+    data:{'id':id},
+    error:function(data){
+        
+    }
+})
+
+})
+
+
+});
+
+
+</script>
+
 @endsection
