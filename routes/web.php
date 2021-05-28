@@ -97,9 +97,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('delete/project/{id}', [App\Http\Controllers\ProjectController::class,'destroy'])->name('delete.project');
+Route::post('delete/project', [App\Http\Controllers\ProjectController::class,'destroy'])->name('delete.project');
 
-Route::get('delete/post/{id}', [App\Http\Controllers\PostController::class,'destroy'])->name('delete.post');
+Route::post('delete/post', [App\Http\Controllers\PostController::class,'destroy'])->name('delete.post');
 Route::post('/store/comment',[App\Http\Controllers\CommentController::class, 'store'])->name('store.comment');
 
 Route::get('posts/list/', [App\Http\Controllers\Postcontroller::class, 'showPostlist'])->name('show.post.list');

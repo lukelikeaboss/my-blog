@@ -94,7 +94,7 @@
                                         <a href="{{ route('edit.project', $project->id ) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"class="btn btn-danger btn-sm delete-project"
                                             data-id="{{ $project->id }}">
-                                                <i class="fa fa-trash"></i>
+                                                <i class="fa fa-trash project_icon_{{ $project->id }}"></i>
                                             </a>
                                     </td>
                                   
@@ -164,7 +164,7 @@
                         </thead>
                             <tbody>
                                 @foreach ($posts as $post )
-                                <tr>
+                                <tr id="post_id_{{ $post->id }}">
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ \Illuminate\Support\Str::limit($post->post, 10) }}</td>
@@ -172,8 +172,10 @@
                                     <td>{{ $post->created_at }}</td>
                                     <td>
                                         <a href="{{ route('edit.post', $post->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                            <a href="#"class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                                            </a>
+                                        <a href="javascript:void(0)"class="btn btn-danger btn-sm delete-post"
+                                        data-id="{{ $post->id }}">
+                                            <i class="fa fa-trash post_icon_{{ $post->id }}"></i>
+                                        </a>
                                     </td>
 
                                    
@@ -272,33 +274,95 @@
 
 
 @endsection
-@section('scripts')
-<script>
-    $(document).ready(function() {
-    $('.datatable').DataTable();
-} );
-    </script>
-@endsection
-@section('scripts')
-<script>
-$document.ready(function(){
-$.ajaxSetup({
-    headers:{
-        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-    }
-});
 
-$('body').on('click','.delete-project', function(){
-    var id =$(this).data("id");
-    confirm("are you su=re you want to delete")
-$.ajax({
-    type:"POST",
-    url:"",
-    data:{'id':id},
-    error:function(data){
-        
-    }
-})
+@section('scripts')
+<script rel="type/javascript">
+    $(document).ready(function(){
+
+        $('.datatable').DataTable();
+
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('body').on('click','.delete-project', function(){
+
+            var id =$(this).data("id");
+            confirm("are you su=re you want to delete");
+
+
+            $('.project_icon_'+id).removeClass('fa-trash');
+            $('.project_icon_'+id).addClass('fa-spinner fa-spin');
+
+
+            $.ajax({
+                type:"POST",
+                url:"{{ route('delete.project') }}",
+                data:{'id':id},
+                success:function (data){
+
+                    $("#project_id_"+id).remove();
+
+                    $('.project_icon_'+id).addClass('fa-trash');
+                    $('.project_icon_'+id).removeClass('fa-spinner fa-spin');
+                },
+                error:function(data){
+                    $('.project_icon_'+id).addClass('fa-trash');
+                    $('.project_icon_'+id).removeClass('fa-spinner fa-spin');
+
+                    console.log('Error:',data);
+
+                    swal.fire({
+                        title:'iza joh!',
+                        text:'rieng ni mbawkni',
+                        icon:'error',
+                        confirmButtonText:'umenauwo?'
+                    })  
+                }
+            })
+
+        })
+
+
+
+
+        $('body').on('click','.delete-post', function(){
+
+            var id =$(this).data("id");
+            confirm("are you sure you want to delete");
+
+
+            $('.post_icon_'+id).removeClass('fa-trash');
+            $('.post_icon_'+id).addClass('fa-spinner fa-spin');
+
+
+            $.ajax({
+                type:"POST",
+                url:"{{ route('delete.post') }}",
+                data:{'id':id},
+                success:function (data){
+
+                    $("#post_id_"+id).remove();
+
+                    $('.post_icon_'+id).addClass('fa-trash');
+                    $('.post_icon_'+id).removeClass('fa-spinner fa-spin');
+                },
+                error:function(data){
+                    $('.post_icon_'+id).addClass('fa-trash');
+                    $('.post_icon_'+id).removeClass('fa-spinner fa-spin');
+
+                    console.log('Error:',data);
+
+                    swal.fire({
+                        title:'iza joh!',
+                        text:'rieng ni mbawkni',
+                        icon:'error',
+                        confirmButtonText:'umenauwo?'
+                    })  
+                }
+            })
 
 })
 

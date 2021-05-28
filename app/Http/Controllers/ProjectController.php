@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\projects;
 use App\Http\Requests\storeProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -142,14 +143,16 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $project = projects::findOrFail($id);
+        $project = projects::findOrFail($request->i);
+        if ($project->featured_image_url!=null){
+            storage::delete('public/images/'.$project->featured_image_url);
+        }
 
         $project->delete();
 
-        return redirect()->back()->with('message', "Deleted Successfully");
-       
+        return response()->json();
         //
     }
     public function showDetails($id){

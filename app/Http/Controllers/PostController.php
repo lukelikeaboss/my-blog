@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\category;
-use App\Models\Comments;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
@@ -147,15 +147,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
       
-        $post = post::findOrFail($id);
+        $post = post::findOrFail($request->id);
+        if ($post->featured_image_url!=null){
+            storage::delete('public/images/'.$post->featured_image_url);
+        }
+        $comments =Comment::where('post_id', $post->id)->delete();
+
 
         $post->delete();
-
-        return redirect()->back()->with('message', "Deleted Successfully");
-       
+        return response()->json();
+    
     }
     public function showDetails($id){
         $post = Post::findorFail($id);
