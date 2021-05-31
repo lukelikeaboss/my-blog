@@ -1,7 +1,7 @@
 <div class="card h-100 border-0 shadow-sm">
     <a href="{{ Route('show.project.details',$project->id) }}">
         <img
-        src="{{asset('storage/images/'.$project->featured_image_url)git }}" alt="Toyota Landcruiser" class="img-fluid card-img-top w-100 image-fit" height="500" />
+        src="{{asset('storage/images/'.$project->featured_image_url) }}" alt="Toyota Landcruiser" class="img-fluid card-img-top w-100 image-fit" height="500" />
       </a>
     <div class="card-body">
       <h5 class="card-title">{{ $project->name }}</h5>

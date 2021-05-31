@@ -44,9 +44,8 @@
             <div class="card">
                 <div class="card-body">
                     <h5>Add a comment</h5>
-                    <form action="{{ route('store.comment') }}" method="POST">
-                        @csrf
-                        @method('post')
+                    <form 
+                  id="reviewForm">
                         <input type="hidden" value="{{ $post->id }}" name="post_id"/>
                         <div class="form-group">
                             <label> Your Comment:</label>
@@ -116,6 +115,37 @@ function launchsweetalert   ()
         confirmButtonText: 'Cool'
         });
 }
+$(document).ready(function (){
+    $.ajaxSetup({
+          headers:{
+              'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content') }
+          });
+
+    $('#reviewForm').on('submit', function(){
+      //when there is a form submited
+      //we overide the default action
+      event.preventDefault();
+      $.ajax({
+        data:$('#reviewForm').serialize(),
+        url:"{{ route('store.comment') }}",
+        type:"POST",
+        dataType:'json',
+        success: function(data){
+            $('#myModal').modal("show");
+        },
+        error: function(data){
+          console.log('Error:', data)
+          swal.fire({
+            title:'error',
+            text:'kuna blunder mahali',
+            icon:'error',
+            confirmButtonText:'umeshika rieng',
+          });
+        }
+      });
+    });
+
+})
 </script>
 
 @endsection

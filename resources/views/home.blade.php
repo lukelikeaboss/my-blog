@@ -290,9 +290,10 @@
         $('body').on('click','.delete-project', function(){
 
             var id =$(this).data("id");
-            confirm("are you su=re you want to delete");
+          
 
-
+            if(confirm("are you sure you want to delete")){
+                
             $('.project_icon_'+id).removeClass('fa-trash');
             $('.project_icon_'+id).addClass('fa-spinner fa-spin');
 
@@ -322,6 +323,7 @@
                     })  
                 }
             })
+            }
 
         })
 
@@ -331,9 +333,10 @@
         $('body').on('click','.delete-post', function(){
 
             var id =$(this).data("id");
-            confirm("are you sure you want to delete");
+            
 
 
+        if(confirm("are you sure you want to delete")){
             $('.post_icon_'+id).removeClass('fa-trash');
             $('.post_icon_'+id).addClass('fa-spinner fa-spin');
 
@@ -363,6 +366,7 @@
                     })  
                 }
             })
+        }
 
 })
 
