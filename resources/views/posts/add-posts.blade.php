@@ -29,7 +29,7 @@
                         @csrf
                         @method('POST')
                         <!-- Adding select category-->
-                        <div class="form-group">
+        `                <div class="form-group">
                             <label for="inputstate">Category</label>
                             <select id="inputstate" name="category_id" class="form-control">
                                 <option selected>choose a category:</option>
@@ -37,7 +37,7 @@
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 
                                     
-                                @endforeach
+                             `   @endforeach
                                 
                             </select>
 
@@ -45,7 +45,7 @@
                           <!-- ending select category-->
                         <div class="form-group">
                              <label> Name:</label>
-                             <input  name="Title" value="{{ request()->old('title') }}" type="text" class="form-control" placeholder="Your Name">
+                             <input  name="title" value="{{ request()->old('title') }}" type="text" class="form-control" placeholder="Your Name">
                         </div>  @error('title')
                         <div class="alert alert-danger"> {{ $message }}</div>
                         @enderror

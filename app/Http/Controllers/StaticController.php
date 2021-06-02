@@ -35,7 +35,7 @@ class StaticController extends Controller
     public function showPostDetails($id){
         $categories = category::all()->take(4);
         $post = Post::findOrFail($id);
-        $comments = Comment::where('post_id', $id)->get();
+        $comments = Comment::fiveStar()->get();
         return view('posts.detail-post', compact('categories', 'post', 'comments'));
        
     }

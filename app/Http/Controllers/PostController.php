@@ -44,7 +44,6 @@ class PostController extends Controller
         $request ->validate([
             'title'=>'required|unique:posts|max:255',
             'post'=>'required',
-            'image'=>'mimes: jpeg, jpg, svg, png',
         ]);
 
         if($request->hasFile('image'))
@@ -76,7 +75,7 @@ class PostController extends Controller
 
         Post::create([
 
-            'title'=>$request->Title,
+            'title'=>$request->title,
             'featured_image_url'=> $file_name,
             'post'=> $request->post,
             'author' => "Sir Kim",
@@ -163,7 +162,8 @@ class PostController extends Controller
     }
     public function showDetails($id){
         $post = Post::findorFail($id);
-        return view('posts.detail-post', compact('post', 'comments'));
+        
+        return view('posts.detail-post', compact('post'));
     }
 
 public function showPostlist(Request $request)

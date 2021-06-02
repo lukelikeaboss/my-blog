@@ -5,6 +5,7 @@
 
   <div class="card-body">
     <h5 class="card-title">{{ $post->title }}</h5>
+    <h6> {{$post->author}}.{{$post->category->name}}</h6> 
     <p class="card-text">{{ \Illuminate\Support\Str::limit($post->post, 250) }}
 
     </p>

@@ -158,6 +158,8 @@
                             <td>Title</td>
                             <td>Post</td>
                             <td>Category</td>
+                            <td>Comments</td>
+
                             <td>Created at@</td>
                             <td>Actions</td>
                             </tr>
@@ -168,7 +170,8 @@
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ \Illuminate\Support\Str::limit($post->post, 10) }}</td>
-                                    <td>{{ $post->category_id }}</td>
+                                    <td>{{ $post->category->name }}</td>
+                                    <td>{{ $post->comments->count() }}</td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>
                                         <a href="{{ route('edit.post', $post->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

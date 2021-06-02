@@ -9,4 +9,14 @@ class Post extends Model
 {
     use HasFactory;
     protected  $guarded= ['id'];
+
+public function comments(){
+    return $this->hasMany('App\Models\Comment');
+}
+public function category(){
+    return $this->belongsTo('App\Models\category');
+}
+public function getAuthorAttribute(){
+    return "Awesome write her";
+}
 }
