@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Models\category;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Storage;
+use App\Models\user;
+use App\Notifications\NewPostNotification;
 class PostController extends Controller
 {
     /**
@@ -82,8 +84,12 @@ class PostController extends Controller
             'user_id' => 1,
             'category_id'=>$request-> category_id ,
         ]);
+        $user = User::where('id', 1 )->first();
+        if($user){
+            $user->notify(new NewPostNotification());
+        }
 
-        return redirect() ->route('home');
+        return redirect() ->route('home')->with ('message', 'post added succefully');
         //
     }
 
